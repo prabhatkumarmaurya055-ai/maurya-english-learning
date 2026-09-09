@@ -1,1 +1,1346 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maurya English Learning</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f6fb;
+color:#202124;
+}
+
+header{
+background:white;
+padding:14px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 8px #0002;
+}
+
+.logo{
+font-size:21px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4169e1;
+}
+
+.stats{
+display:flex;
+gap:8px;
+margin-top:8px;
+}
+
+.stat{
+background:#eef2ff;
+padding:6px 10px;
+border-radius:20px;
+font-size:13px;
+}
+
+main{
+max-width:620px;
+margin:auto;
+padding:15px 13px 50px;
+}
+
+h1{font-size:25px}
+h2{font-size:20px}
+
+.card{
+background:white;
+border-radius:16px;
+padding:16px;
+margin:12px 0;
+box-shadow:0 2px 8px #0001;
+}
+
+.lesson{
+display:flex;
+align-items:center;
+gap:12px;
+cursor:pointer;
+}
+
+.circle{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#4169e1;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.small{
+font-size:13px;
+color:#666;
+}
+
+button{
+border:0;
+border-radius:11px;
+padding:10px 15px;
+margin:4px;
+font-size:15px;
+background:#4169e1;
+color:white;
+cursor:pointer;
+}
+
+.back{
+background:#222;
+}
+
+.homeBtn{
+background:#5b21b6;
+}
+
+.hidden{
+display:none;
+}
+
+.word{
+display:inline-block;
+background:#eef2ff;
+padding:8px 10px;
+margin:4px;
+border-radius:9px;
+cursor:pointer;
+}
+
+.example{
+background:#f8f9fc;
+padding:12px;
+border-radius:10px;
+margin:8px 0;
+}
+
+.vocabRow{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+.vocabHindi{
+font-weight:bold;
+}
+
+.vocabEnglish{
+color:#4169e1;
+font-weight:bold;
+cursor:pointer;
+}
+
+.search{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+margin:8px 0 12px;
+}
+
+.progress{
+height:9px;
+background:#e5e7eb;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress div{
+height:100%;
+background:#4169e1;
+width:0%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Maurya <span>English Learning</span>
+</div>
+
+<div class="stats">
+<div class="stat">⭐ XP: <span id="xp">0</span></div>
+<div class="stat">📚 Lessons: <span id="done">0</span></div>
+</div>
+
+</header>
+
+<main>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+<h1>English सीखना शुरू करें 🚀</h1>
+
+<p>
+Basic से Advanced तक English सीखें।
+</p>
+
+<div class="card">
+
+<b>आपकी Progress</b>
+
+<div class="progress" style="margin-top:10px">
+<div id="progress"></div>
+</div>
+
+<p class="small">
+Lesson पूरा करने पर XP मिलेगा।
+</p>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('basic')">
+
+<div class="circle">1</div>
+
+<div>
+<b>Basic English</b>
+<div class="small">A-Z और Basic Words</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('grammar')">
+
+<div class="circle">2</div>
+
+<div>
+<b>Grammar</b>
+<div class="small">Noun, Pronoun, Verb आदि</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('tenses')">
+
+<div class="circle">3</div>
+
+<div>
+<b>Tenses</b>
+<div class="small">All 12 Tenses</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('questions')">
+
+<div class="circle">4</div>
+
+<div>
+<b>Questions</b>
+<div class="small">What, When, Where, Why...</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('daily')">
+
+<div class="circle">5</div>
+
+<div>
+<b>Daily English</b>
+<div class="small">रोज़मर्रा के वाक्य</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('vocabulary')">
+
+<div class="circle">6</div>
+
+<div>
+<b>Vocabulary</b>
+<div class="small">Hindi → English + आवाज़</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('speaking')">
+
+<div class="circle">7</div>
+
+<div>
+<b>Speaking</b>
+<div class="small">Speaking Practice</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('writing')">
+
+<div class="circle">8</div>
+
+<div>
+<b>Writing</b>
+<div class="small">Spelling और Writing</div>
+</div>
+
+</div>
+
+
+<div class="card lesson" onclick="openPage('test')">
+
+<div class="circle">9</div>
+
+<div>
+<b>Test</b>
+<div class="small">अपनी English check करें</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- BASIC -->
+
+<section id="basic" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Basic English</h1>
+
+
+<div class="card">
+
+<h2>A-Z</h2>
+
+<span class="word" onclick="speak('A')">A</span>
+<span class="word" onclick="speak('B')">B</span>
+<span class="word" onclick="speak('C')">C</span>
+<span class="word" onclick="speak('D')">D</span>
+<span class="word" onclick="speak('E')">E</span>
+<span class="word" onclick="speak('F')">F</span>
+<span class="word" onclick="speak('G')">G</span>
+<span class="word" onclick="speak('H')">H</span>
+<span class="word" onclick="speak('I')">I</span>
+<span class="word" onclick="speak('J')">J</span>
+<span class="word" onclick="speak('K')">K</span>
+<span class="word" onclick="speak('L')">L</span>
+<span class="word" onclick="speak('M')">M</span>
+<span class="word" onclick="speak('N')">N</span>
+<span class="word" onclick="speak('O')">O</span>
+<span class="word" onclick="speak('P')">P</span>
+<span class="word" onclick="speak('Q')">Q</span>
+<span class="word" onclick="speak('R')">R</span>
+<span class="word" onclick="speak('S')">S</span>
+<span class="word" onclick="speak('T')">T</span>
+<span class="word" onclick="speak('U')">U</span>
+<span class="word" onclick="speak('V')">V</span>
+<span class="word" onclick="speak('W')">W</span>
+<span class="word" onclick="speak('X')">X</span>
+<span class="word" onclick="speak('Y')">Y</span>
+<span class="word" onclick="speak('Z')">Z</span>
+
+</div>
+
+
+<div class="card">
+
+<h2>Vowels</h2>
+
+<p>A, E, I, O, U</p>
+
+<button onclick="speak('A E I O U')">
+🔊 सुनें
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>Basic Sentences</h2>
+
+<div class="example">
+I play cricket.
+<br>
+मैं क्रिकेट खेलता हूँ।
+</div>
+
+<div class="example">
+She is happy.
+<br>
+वह खुश है।
+</div>
+
+<div class="example">
+We are friends.
+<br>
+हम दोस्त हैं।
+</div>
+
+<button onclick="speak('I play cricket')">
+🔊 Sentence सुनें
+</button>
+
+</div>
+
+<button onclick="completeLesson()">
+⭐ Lesson Complete
+</button>
+
+</section>
+
+
+
+<!-- GRAMMAR -->
+
+<section id="grammar" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Grammar</h1>
+
+
+<div class="card">
+
+<h2>Noun</h2>
+
+<p>
+Noun किसी व्यक्ति, स्थान, वस्तु या चीज़ का नाम होता है।
+</p>
+
+<div class="example">Ram is a student.</div>
+<div class="example">Delhi is a city.</div>
+<div class="example">This is a book.</div>
+<div class="example">My school is big.</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Pronoun</h2>
+
+<p>
+Noun की जगह इस्तेमाल होने वाले शब्द Pronoun कहलाते हैं।
+</p>
+
+<div class="example">I am a student.</div>
+<div class="example">He is my brother.</div>
+<div class="example">She is my friend.</div>
+<div class="example">They are happy.</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Verb</h2>
+
+<p>
+Verb काम या action बताता है।
+</p>
+
+<div class="example">I eat food.</div>
+<div class="example">I play cricket.</div>
+<div class="example">She reads a book.</div>
+<div class="example">They go to school.</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Adjective</h2>
+
+<div class="example">He is a good boy.</div>
+<div class="example">She is happy.</div>
+<div class="example">This is a big house.</div>
+<div class="example">It is a beautiful flower.</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Adverb</h2>
+
+<div class="example">He runs quickly.</div>
+<div class="example">She speaks slowly.</div>
+<div class="example">He works carefully.</div>
+<div class="example">They walked slowly.</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Helping Verbs</h2>
+
+<p>
+am, is, are, was, were, has, have, had, will
+</p>
+
+<div class="example">I am happy.</div>
+<div class="example">He is reading.</div>
+<div class="example">They are playing.</div>
+<div class="example">She was tired.</div>
+<div class="example">We were studying.</div>
+<div class="example">I have a book.</div>
+<div class="example">He has a car.</div>
+<div class="example">I will go.</div>
+
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- TENSES -->
+
+<section id="tenses" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>All 12 Tenses</h1>
+
+
+<div class="card">
+<h2>1. Present Simple</h2>
+<p>रोज़ या सामान्य काम।</p>
+<div class="example">I play cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>2. Present Continuous</h2>
+<p>अभी चल रहा काम।</p>
+<div class="example">I am playing cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>3. Present Perfect</h2>
+<div class="example">I have played cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>4. Present Perfect Continuous</h2>
+<div class="example">I have been playing cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>5. Past Simple</h2>
+<div class="example">I played cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>6. Past Continuous</h2>
+<div class="example">I was playing cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>7. Past Perfect</h2>
+<div class="example">I had played cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>8. Past Perfect Continuous</h2>
+<div class="example">I had been playing cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>9. Future Simple</h2>
+<div class="example">I will play cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>10. Future Continuous</h2>
+<div class="example">I will be playing cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>11. Future Perfect</h2>
+<div class="example">I will have played cricket.</div>
+</div>
+
+
+<div class="card">
+<h2>12. Future Perfect Continuous</h2>
+<div class="example">I will have been playing cricket.</div>
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- QUESTIONS -->
+
+<section id="questions" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Question Words</h1>
+
+<div class="card">
+<h2>What — क्या</h2>
+<div class="example">What are you doing?</div>
+</div>
+
+<div class="card">
+<h2>When — कब</h2>
+<div class="example">When will you come?</div>
+</div>
+
+<div class="card">
+<h2>Where — कहाँ</h2>
+<div class="example">Where do you live?</div>
+</div>
+
+<div class="card">
+<h2>Who — कौन</h2>
+<div class="example">Who is he?</div>
+</div>
+
+<div class="card">
+<h2>Why — क्यों</h2>
+<div class="example">Why are you late?</div>
+</div>
+
+<div class="card">
+<h2>How — कैसे</h2>
+<div class="example">How are you?</div>
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- DAILY -->
+
+<section id="daily" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Daily English</h1>
+
+<div class="card">
+
+<div class="example">
+Good morning.
+<br>सुप्रभात।
+</div>
+
+<div class="example">
+How are you?
+<br>आप कैसे हैं?
+</div>
+
+<div class="example">
+I am fine.
+<br>मैं ठीक हूँ।
+</div>
+
+<div class="example">
+Thank you.
+<br>धन्यवाद।
+</div>
+
+<div class="example">
+Please help me.
+<br>कृपया मेरी मदद करें।
+</div>
+
+<button onclick="speak('Good morning')">🔊 सुनें</button>
+
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- VOCABULARY -->
+
+<section id="vocabulary" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Hindi → English Vocabulary 📚</h1>
+
+<p class="small">
+English word पर click करें और pronunciation सुनें।
+</p>
+
+<input
+class="search"
+id="vocabSearch"
+placeholder="Hindi या English word खोजें..."
+oninput="searchVocab()"
+>
+
+
+<div class="card">
+
+<div id="vocabList"></div>
+
+</div>
+
+<button onclick="completeLesson()">⭐ Vocabulary Lesson Complete</button>
+
+</section>
+
+
+
+<!-- SPEAKING -->
+
+<section id="speaking" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Speaking Practice 🗣️</h1>
+
+<div class="card">
+
+<div class="example">
+I am learning English.
+</div>
+
+<button onclick="speak('I am learning English')">
+🔊 सुनें
+</button>
+
+<div class="example">
+I go to school every day.
+</div>
+
+<button onclick="speak('I go to school every day')">
+🔊 सुनें
+</button>
+
+<div class="example">
+I played cricket yesterday.
+</div>
+
+<button onclick="speak('I played cricket yesterday')">
+🔊 सुनें
+</button>
+
+<div class="example">
+I will study tomorrow.
+</div>
+
+<button onclick="speak('I will study tomorrow')">
+🔊 सुनें
+</button>
+
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- WRITING -->
+
+<section id="writing" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>Writing Practice ✍️</h1>
+
+<div class="card">
+
+<h2>-ing</h2>
+
+<p>play → playing</p>
+<p>read → reading</p>
+<p>write → writing</p>
+
+</div>
+
+<div class="card">
+
+<h2>-ed</h2>
+
+<p>play → played</p>
+<p>walk → walked</p>
+<p>help → helped</p>
+
+</div>
+
+<div class="card">
+
+<h2>a / an</h2>
+
+<p>a book</p>
+<p>an apple</p>
+<p>a car</p>
+<p>an orange</p>
+
+</div>
+
+<div class="card">
+
+<h2>at / on / in</h2>
+
+<p>at 5 o'clock</p>
+<p>on Monday</p>
+<p>in India</p>
+
+</div>
+
+<button onclick="completeLesson()">⭐ Lesson Complete</button>
+
+</section>
+
+
+
+<!-- TEST -->
+
+<section id="test" class="hidden">
+
+<button class="back" onclick="home()">← Home</button>
+
+<h1>English Test 📝</h1>
+
+
+<div class="card">
+
+<p><b>1. मैं क्रिकेट खेलता हूँ।</b></p>
+
+<div class="word" onclick="checkTest(this,false)">
+I am play cricket.
+</div>
+
+<div class="word" onclick="checkTest(this,true)">
+I play cricket.
+</div>
+
+<div class="word" onclick="checkTest(this,false)">
+I played cricket tomorrow.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<p><b>2. वह खुश है।</b></p>
+
+<div class="word" onclick="checkTest(this,true)">
+She is happy.
+</div>
+
+<div class="word" onclick="checkTest(this,false)">
+She are happy.
+</div>
+
+<div class="word" onclick="checkTest(this,false)">
+She happy is.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<p><b>3. मैं कल पढ़ूँगा।</b></p>
+
+<div class="word" onclick="checkTest(this,false)">
+I read yesterday.
+</div>
+
+<div class="word" onclick="checkTest(this,true)">
+I will study tomorrow.
+</div>
+
+<div class="word" onclick="checkTest(this,false)">
+I am studied tomorrow.
+</div>
+
+</div>
+
+<p id="testResult"></p>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+let xp=0;
+let done=0;
+
+
+/* SPEAK */
+
+function speak(text){
+
+window.speechSynthesis.cancel();
+
+let voice=new SpeechSynthesisUtterance(text);
+
+voice.lang="en-US";
+
+voice.rate=0.85;
+
+window.speechSynthesis.speak(voice);
+
+}
+
+
+/* PAGE SYSTEM */
+
+function openPage(id){
+
+document.querySelectorAll("main section").forEach(function(section){
+
+section.classList.add("hidden");
+
+});
+
+document.getElementById(id).classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}
+
+
+function home(){
+
+openPage("home");
+
+}
+
+
+/* XP */
+
+function completeLesson(){
+
+xp+=10;
+
+done+=1;
+
+document.getElementById("xp").innerText=xp;
+
+document.getElementById("done").innerText=done;
+
+let percent=Math.min(done*11,100);
+
+document.getElementById("progress").style.width=percent+"%";
+
+alert("Lesson Complete! ⭐ +10 XP");
+
+}
+
+
+/* TEST */
+
+function checkTest(element,correct){
+
+if(correct){
+
+element.style.background="#dff6df";
+
+xp+=5;
+
+document.getElementById("xp").innerText=xp;
+
+document.getElementById("testResult").innerText="✅ सही उत्तर! +5 XP";
+
+}else{
+
+element.style.background="#ffe0e0";
+
+document.getElementById("testResult").innerText="❌ फिर से कोशिश करें।";
+
+}
+
+}
+
+
+/* VOCABULARY DATA */
+
+const vocabulary=[
+
+["मैं","I"],
+["तुम","you"],
+["आप","you"],
+["वह","he"],
+["वह","she"],
+["यह","this"],
+["हम","we"],
+["वे","they"],
+["किताब","book"],
+["कलम","pen"],
+["स्कूल","school"],
+["घर","house"],
+["कमरा","room"],
+["दरवाज़ा","door"],
+["खिड़की","window"],
+["कुर्सी","chair"],
+["मेज़","table"],
+["बैग","bag"],
+["पानी","water"],
+["खाना","food"],
+["दूध","milk"],
+["चाय","tea"],
+["सेब","apple"],
+["संतरा","orange"],
+["केला","banana"],
+["आम","mango"],
+["रोटी","bread"],
+["चावल","rice"],
+["दोस्त","friend"],
+["परिवार","family"],
+["माँ","mother"],
+["पिता","father"],
+["भाई","brother"],
+["बहन","sister"],
+["बच्चा","child"],
+["लड़का","boy"],
+["लड़की","girl"],
+["आदमी","man"],
+["महिला","woman"],
+["खुश","happy"],
+["दुखी","sad"],
+["अच्छा","good"],
+["बुरा","bad"],
+["बड़ा","big"],
+["छोटा","small"],
+["तेज़","fast"],
+["धीमा","slow"],
+["सुंदर","beautiful"],
+["आसान","easy"],
+["मुश्किल","difficult"],
+["खाना खाना","eat"],
+["पीना","drink"],
+["जाना","go"],
+["आना","come"],
+["देखना","see"],
+["पढ़ना","read"],
+["लिखना","write"],
+["बोलना","speak"],
+["सुनना","listen"],
+["खेलना","play"],
+["दौड़ना","run"],
+["चलना","walk"],
+["बैठना","sit"],
+["खड़ा होना","stand"],
+["सोना","sleep"],
+["जागना","wake"],
+["काम करना","work"],
+["पढ़ाई करना","study"],
+["सीखना","learn"],
+["सिखाना","teach"],
+["खरीदना","buy"],
+["बेचना","sell"],
+["देना","give"],
+["लेना","take"],
+["खोलना","open"],
+["बंद करना","close"],
+["शुरू करना","start"],
+["खत्म करना","finish"],
+["मदद करना","help"],
+["प्यार करना","love"],
+["चाहना","want"],
+["जानना","know"],
+["सोचना","think"],
+["समझना","understand"],
+["याद रखना","remember"],
+["भूलना","forget"],
+["पूछना","ask"],
+["जवाब देना","answer"],
+["बनाना","make"],
+["करना","do"],
+["हँसना","laugh"],
+["रोना","cry"],
+["हँसाना","entertain"],
+["आज","today"],
+["कल","tomorrow"],
+["बीता हुआ कल","yesterday"],
+["सुबह","morning"],
+["दोपहर","afternoon"],
+["शाम","evening"],
+["रात","night"],
+["अभी","now"],
+["बाद में","later"],
+["जल्दी","early"],
+["देर","late"],
+["हमेशा","always"],
+["अक्सर","often"],
+["कभी-कभी","sometimes"],
+["कभी नहीं","never"],
+["यहाँ","here"],
+["वहाँ","there"],
+["क्यों","why"],
+["क्या","what"],
+["कब","when"],
+["कहाँ","where"],
+["कौन","who"],
+["कैसे","how"],
+["कौन सा","which"],
+["किसका","whose"],
+["और","and"],
+["लेकिन","but"],
+["या","or"],
+["क्योंकि","because"],
+["अगर","if"],
+["बहुत","very"],
+["अधिक","more"],
+["कम","less"],
+["फिर","again"],
+["साथ","together"],
+["अंदर","inside"],
+["बाहर","outside"],
+["ऊपर","up"],
+["नीचे","down"],
+["पास","near"],
+["दूर","far"],
+["पहले","before"],
+["बाद","after"],
+["नया","new"],
+["पुराना","old"],
+["साफ","clean"],
+["गंदा","dirty"],
+["गरम","hot"],
+["ठंडा","cold"],
+["खुला","open"],
+["बंद","closed"],
+["मजबूत","strong"],
+["कमज़ोर","weak"],
+["सही","correct"],
+["गलत","wrong"],
+["तैयार","ready"],
+["व्यस्त","busy"],
+["खाली","empty"],
+["पूरा","full"],
+["महत्वपूर्ण","important"],
+["सुंदर","pretty"],
+["सुरक्षित","safe"],
+["खतरनाक","dangerous"],
+["समय","time"],
+["दिन","day"],
+["सप्ताह","week"],
+["महीना","month"],
+["साल","year"],
+["नाम","name"],
+["उम्र","age"],
+["जगह","place"],
+["शहर","city"],
+["गाँव","village"],
+["देश","country"],
+["दुनिया","world"],
+["सड़क","road"],
+["बाज़ार","market"],
+["दुकान","shop"],
+["अस्पताल","hospital"],
+["पार्क","park"],
+["कमरा","room"],
+["कक्षा","class"],
+["शिक्षक","teacher"],
+["विद्यार्थी","student"],
+["प्रश्न","question"],
+["उत्तर","answer"],
+["शब्द","word"],
+["वाक्य","sentence"],
+["कहानी","story"],
+["पुस्तक","book"],
+["समस्या","problem"],
+["समाधान","solution"],
+["विचार","idea"],
+["मौका","chance"],
+["काम","work"],
+["नौकरी","job"],
+["पैसा","money"],
+["कीमत","price"],
+["समय","time"],
+["रास्ता","way"],
+["सच","truth"],
+["झूठ","lie"],
+["कारण","reason"],
+["उदाहरण","example"],
+["अभ्यास","practice"],
+["परीक्षा","test"],
+["जीतना","win"],
+["हारना","lose"],
+["कोशिश करना","try"],
+["बदलना","change"],
+["रखना","keep"],
+["पाना","get"],
+["ढूँढना","find"],
+["दिखाना","show"],
+["बताने","tell"],
+["बुलाना","call"],
+["प्रतीक्षा करना","wait"],
+["उम्मीद करना","hope"],
+["याद करना","recall"],
+["चुनना","choose"],
+["भेजना","send"],
+["लाना","bring"],
+["ले जाना","carry"],
+["रुकना","stop"],
+["चलाना","drive"],
+["उड़ना","fly"],
+["तैरना","swim"],
+["गाना","sing"],
+["नाचना","dance"],
+["चित्र बनाना","draw"],
+["बनाना","build"],
+["तोड़ना","break"],
+["धोना","wash"],
+["पकाना","cook"],
+["काटना","cut"],
+["पढ़ाना","educate"],
+["सहमत होना","agree"],
+["असहमत होना","disagree"],
+["विश्वास करना","believe"],
+["याद आना","remember"],
+["मिलना","meet"],
+["बात करना","talk"],
+["सवाल करना","question"],
+["जवाब देना","reply"],
+["हँसना","smile"],
+["मुस्कुराना","smile"],
+["डरना","fear"],
+["मदद","help"],
+["सपना","dream"],
+["लक्ष्य","goal"],
+["सफलता","success"],
+["असफलता","failure"],
+["खुशी","happiness"],
+["दुख","sadness"],
+["दोस्ती","friendship"],
+["स्वास्थ्य","health"],
+["शिक्षा","education"],
+["भाषा","language"],
+["अंग्रेज़ी","English"],
+["हिंदी","Hindi"],
+["आवाज़","voice"],
+["सुनना","hear"],
+["देखना","watch"],
+["महसूस करना","feel"],
+["छूना","touch"],
+["स्वाद लेना","taste"],
+["सूँघना","smell"],
+["रंग","color"],
+["लाल","red"],
+["नीला","blue"],
+["हरा","green"],
+["पीला","yellow"],
+["काला","black"],
+["सफेद","white"],
+["एक","one"],
+["दो","two"],
+["तीन","three"],
+["चार","four"],
+["पाँच","five"],
+["छह","six"],
+["सात","seven"],
+["आठ","eight"],
+["नौ","nine"],
+["दस","ten"]
+
+];
+
+
+/* SHOW VOCABULARY */
+
+function showVocabulary(list){
+
+let box=document.getElementById("vocabList");
+
+box.innerHTML="";
+
+list.forEach(function(item){
+
+let row=document.createElement("div");
+
+row.className="vocabRow";
+
+row.innerHTML=
+'<span class="vocabHindi">'+item[0]+'</span>'+
+'<span class="vocabEnglish" onclick="speak(\''+
+item[1].replace(/'/g,"\\'")+
+'\')">'+item[1]+' 🔊</span>';
+
+box.appendChild(row);
+
+});
+
+}
+
+
+/* SEARCH */
+
+function searchVocab(){
+
+let query=document
+.getElementById("vocabSearch")
+.value
+.toLowerCase();
+
+let filtered=vocabulary.filter(function(item){
+
+return item[0].toLowerCase().includes(query)
+||
+item[1].toLowerCase().includes(query);
+
+});
+
+showVocabulary(filtered);
+
+}
+
+
+/* INITIAL VOCABULARY */
+
+showVocabulary(vocabulary);
+
+</script>
+
+</body>
+</html>
