@@ -167,345 +167,59 @@ background:#4169e1;
 width:0%;
 }
 </style>
-  <!-- MAURYA ENGLISH LEARNING - LEVEL SYSTEM -->
+  <!-- ENGLISH LEVELS -->
 
-<div id="melLevelSystem" style="margin:22px 0;">
+<div style="max-width:480px;margin:25px auto;padding:0 15px;text-align:center;">
 
-  <!-- LEVEL SELECTION -->
-  <div id="melLevelSelect">
+  <h2 style="margin-bottom:6px;">
+    अपना English Level चुनें
+  </h2>
 
-    <h2 style="text-align:center;margin-bottom:6px;">
-      अपना English Level चुनें
-    </h2>
+  <p style="color:#666;margin-bottom:18px;">
+    अपने level से English सीखना शुरू करें
+  </p>
 
-    <p style="text-align:center;color:#666;margin-bottom:18px;">
-      Basic से Graduation Level तक सीखें
-    </p>
+  <div style="display:flex;flex-direction:column;gap:12px;">
 
-    <div style="display:flex;flex-direction:column;gap:10px;">
-
-      <button onclick="melChooseLevel('Basic')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Basic
-      </button>
-
-      <button onclick="melChooseLevel('Beginner')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Beginner
-      </button>
-
-      <button onclick="melChooseLevel('Elementary')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Elementary
-      </button>
-
-      <button onclick="melChooseLevel('Intermediate')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Intermediate
-      </button>
-
-      <button onclick="melChooseLevel('Upper-Intermediate')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Upper-Intermediate
-      </button>
-
-      <button onclick="melChooseLevel('Advanced')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Advanced
-      </button>
-
-      <button onclick="melChooseLevel('Graduation')"
-        style="width:100%;padding:14px 16px;background:#fff;color:#222;border:1px solid #ddd;text-align:left;">
-        Graduation Level
-      </button>
-
-    </div>
-  </div>
-
-
-  <!-- LEVEL DASHBOARD -->
-  <div id="melLevelDashboard" style="display:none;">
-
-    <button onclick="melChangeLevel()"
-      style="background:#222;color:#fff;padding:10px 15px;border-radius:10px;">
-      ← Change Level
+    <button onclick="melChooseLevel('Basic')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#dff3ff;color:#145374;font-size:16px;font-weight:600;">
+      Basic
     </button>
 
-    <div style="margin-top:15px;padding:16px;background:#fff;border-radius:15px;box-shadow:0 2px 8px #0001;">
-
-      <h2 id="melLevelTitle" style="margin-top:0;"></h2>
-
-      <p id="melLevelDescription" style="color:#666;"></p>
-
-      <div id="melParts"></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- COURSE PAGE -->
-  <div id="melCoursePage" style="display:none;">
-
-    <button onclick="melBackToParts()"
-      style="background:#222;color:#fff;padding:10px 15px;border-radius:10px;">
-      ← Back
+    <button onclick="melChooseLevel('Beginner')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#e8f7df;color:#28611c;font-size:16px;font-weight:600;">
+      Beginner
     </button>
 
-    <div style="margin-top:15px;padding:16px;background:#fff;border-radius:15px;box-shadow:0 2px 8px #0001;">
+    <button onclick="melChooseLevel('Elementary')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff1d6;color:#79500b;font-size:16px;font-weight:600;">
+      Elementary
+    </button>
 
-      <h2 id="melCourseTitle"></h2>
+    <button onclick="melChooseLevel('Intermediate')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#f0e5ff;color:#5a3185;font-size:16px;font-weight:600;">
+      Intermediate
+    </button>
 
-      <div id="melCourseContent"></div>
+    <button onclick="melChooseLevel('Upper-Intermediate')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#ffe4ed;color:#87324d;font-size:16px;font-weight:600;">
+      Upper-Intermediate
+    </button>
 
-      <button onclick="melCompletePart()"
-        style="margin-top:15px;background:#16803c;color:#fff;padding:12px 18px;border-radius:10px;">
-        ✓ Complete Part
-      </button>
+    <button onclick="melChooseLevel('Advanced')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#e1f4ef;color:#176050;font-size:16px;font-weight:600;">
+      Advanced
+    </button>
 
-    </div>
+    <button onclick="melChooseLevel('Graduation')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff0f0;color:#7b2929;font-size:16px;font-weight:600;">
+      Graduation Level
+    </button>
 
   </div>
 
 </div>
-
-
-<script>
-
-const melCourses = {
-
-  "Basic": {
-    description:"English की सबसे जरूरी नींव यहाँ से शुरू करें।",
-    parts:[
-      ["Alphabet & Sounds","Alphabet, vowels, consonants और basic sounds सीखें।"],
-      ["Basic Words","घर, परिवार, वस्तुएँ और रोज़मर्रा के शब्द सीखें।"],
-      ["Pronouns","I, you, he, she, it, we, they और इनके प्रयोग सीखें।"],
-      ["am / is / are","am, is, are के नियम और sentence practice करें।"],
-      ["Basic Sentences","छोटे positive, negative और question sentences बनाना सीखें।"]
-    ]
-  },
-
-  "Beginner": {
-    description:"Basic के बाद रोज़मर्रा की English बोलना, पढ़ना और लिखना सीखें।",
-    parts:[
-      ["Reading & Phonics","Sounds, blending, spelling और छोटे words पढ़ना सीखें।"],
-      ["Daily Vocabulary","रोज़मर्रा के जरूरी English words और उनके meanings सीखें।"],
-      ["Present Tense","Present Simple और Present Continuous के rules और practice।"],
-      ["Past & Future","was/were, did और will का सही प्रयोग सीखें।"],
-      ["Speaking & Writing","Daily-life speaking, sentence writing और listening practice।"]
-    ]
-  },
-
-  "Elementary": {
-    description:"अब sentences को थोड़ा बड़ा और सही बनाना सीखें।",
-    parts:[
-      ["All Basic Tenses","Present, Past और Future के Simple तथा Continuous forms।"],
-      ["Perfect Tenses","has/have/had और Perfect Tense का प्रयोग।"],
-      ["Questions","What, When, Where, Who, Why, How और question formation।"],
-      ["Negative Sentences","Negative और Negative Question sentences की practice।"],
-      ["Reading & Conversation","Short passages, conversation और daily speaking practice।"]
-    ]
-  },
-
-  "Intermediate": {
-    description:"Grammar, vocabulary और communication को मजबूत करें।",
-    parts:[
-      ["All 12 Tenses","12 tenses के formulas, examples और practice।"],
-      ["Advanced Grammar","Modals, articles, conjunctions और sentence structure।"],
-      ["Complex Sentences","दो या अधिक ideas को सही तरीके से जोड़ना।"],
-      ["Speaking Practice","Conversation, questions, answers और situation practice।"],
-      ["Writing Practice","Paragraph, messages, descriptions और structured writing।"]
-    ]
-  },
-
-  "Upper-Intermediate": {
-    description:"Natural English समझने और ज्यादा confidently बोलने की practice।",
-    parts:[
-      ["Advanced Tenses","Perfect Continuous और tense combinations की practice।"],
-      ["Advanced Vocabulary","Synonyms, antonyms, phrases और useful expressions।"],
-      ["Grammar in Context","Grammar को real sentences और conversations में प्रयोग करें।"],
-      ["Listening & Speaking","Longer conversations और listening-response practice।"],
-      ["Advanced Writing","Detailed paragraphs, opinions और explanations लिखें।"]
-    ]
-  },
-
-  "Advanced": {
-    description:"Strong grammar, fluent communication और advanced writing।",
-    parts:[
-      ["Advanced Grammar","Clauses, conditionals, reported speech और advanced structures।"],
-      ["Natural English","Common expressions, collocations और natural sentence patterns।"],
-      ["Speaking Fluency","Long answers, discussions और spontaneous speaking practice।"],
-      ["Reading Skills","Long passages, vocabulary from context और comprehension।"],
-      ["Advanced Writing","Essays, formal writing, arguments और clear explanations।"]
-    ]
-  },
-
-  "Graduation": {
-    description:"High-level English: academic reading, writing, speaking और analysis।",
-    parts:[
-      ["Academic English","Academic vocabulary और advanced sentence structures।"],
-      ["Critical Reading","Long texts, ideas, arguments और inference समझना।"],
-      ["Academic Writing","Structured essays, explanations और analytical writing।"],
-      ["Professional Communication","Presentation, discussion और professional communication।"],
-      ["Mastery Test","Grammar, vocabulary, reading, writing, listening और speaking revision।"]
-    ]
-  }
-
-};
-
-
-let melSelectedLevel = "";
-let melCompletedParts = 0;
-let melCurrentPart = 0;
-
-
-function melChooseLevel(level){
-
-  melSelectedLevel = level;
-  melCompletedParts = Number(localStorage.getItem("mel_" + level) || 0);
-
-  document.getElementById("melLevelSelect").style.display="none";
-  document.getElementById("melLevelDashboard").style.display="block";
-  document.getElementById("melCoursePage").style.display="none";
-
-  document.getElementById("melLevelTitle").innerText =
-    level + " Level";
-
-  document.getElementById("melLevelDescription").innerText =
-    melCourses[level].description;
-
-  melShowParts();
-}
-
-
-function melShowParts(){
-
-  const box = document.getElementById("melParts");
-  box.innerHTML="";
-
-  melCourses[melSelectedLevel].parts.forEach((part,index)=>{
-
-    const unlocked = index <= melCompletedParts;
-
-    const div = document.createElement("div");
-
-    div.style.cssText =
-      "margin:10px 0;padding:14px;border:1px solid #ddd;border-radius:12px;background:" +
-      (unlocked ? "#fff" : "#f3f3f3") + ";";
-
-    div.innerHTML =
-      "<b>Part " + (index+1) + ": " + part[0] + "</b>" +
-      "<p style='margin:6px 0;color:#666;font-size:14px;'>" +
-      part[1] +
-      "</p>" +
-      (
-        unlocked
-        ?
-        "<button onclick=\"melOpenPart(" + index + ")\" style='background:#4169e1;color:#fff;'>Open Part</button>"
-        :
-        "<button disabled style='background:#aaa;color:#fff;'>🔒 Locked</button>"
-      );
-
-    box.appendChild(div);
-
-  });
-
-}
-
-
-function melOpenPart(index){
-
-  if(index > melCompletedParts) return;
-
-  melCurrentPart = index;
-
-  const part =
-    melCourses[melSelectedLevel].parts[index];
-
-  document.getElementById("melLevelDashboard").style.display="none";
-  document.getElementById("melCoursePage").style.display="block";
-
-  document.getElementById("melCourseTitle").innerText =
-    "Part " + (index+1) + ": " + part[0];
-
-  document.getElementById("melCourseContent").innerHTML =
-
-    "<h3>📘 Learn</h3>" +
-
-    "<div style='padding:12px;background:#f8f9fc;border-radius:10px;'>" +
-    part[1] +
-    "<br><br>यहाँ इस topic के rules आसान भाषा में समझाए जाएंगे।" +
-    "</div>" +
-
-    "<h3>📝 Examples</h3>" +
-
-    "<div style='padding:12px;background:#f8f9fc;border-radius:10px;'>" +
-    "Example 1 — Learn the rule.<br>" +
-    "Example 2 — Read and understand the sentence.<br>" +
-    "Example 3 — Speak the sentence aloud." +
-    "</div>" +
-
-    "<h3>✍️ Practice</h3>" +
-
-    "<div style='padding:12px;background:#f8f9fc;border-radius:10px;'>" +
-    "Practice questions यहाँ होंगी। सही और गलत answers की checking होगी।" +
-    "</div>" +
-
-    "<h3>🧪 Test</h3>" +
-
-    "<div style='padding:12px;background:#f8f9fc;border-radius:10px;'>" +
-    "Test पूरा करने के बाद score और mistakes दिखाई जाएंगी।" +
-    "</div>" +
-
-    "<h3>🔁 Correction & Repeat</h3>" +
-
-    "<div style='padding:12px;background:#f8f9fc;border-radius:10px;'>" +
-    "गलती होने पर सही answer, गलती का कारण और दोबारा practice मिलेगी।" +
-    "</div>";
-
-}
-
-
-function melCompletePart(){
-
-  if(melCurrentPart === melCompletedParts){
-
-    melCompletedParts++;
-
-    localStorage.setItem(
-      "mel_" + melSelectedLevel,
-      melCompletedParts
-    );
-
-  }
-
-  melBackToParts();
-
-}
-
-
-function melBackToParts(){
-
-  document.getElementById("melCoursePage").style.display="none";
-  document.getElementById("melLevelDashboard").style.display="block";
-
-  melShowParts();
-
-}
-
-
-function melChangeLevel(){
-
-  melSelectedLevel="";
-
-  document.getElementById("melLevelDashboard").style.display="none";
-  document.getElementById("melCoursePage").style.display="none";
-  document.getElementById("melLevelSelect").style.display="block";
-
-}
-
-</script>
-</head>
+  </head>
 
 <body>
   <div style="width:56px; height:56px; margin:10px auto; border-radius:14px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:white; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
