@@ -1077,19 +1077,696 @@ window.speechSynthesis.speak(voice);
 
 /* PAGE SYSTEM */
 
+/* ==============================
+   PAGE SYSTEM
+   ============================== */
+
 function openPage(id){
 
-document.querySelectorAll("main section").forEach(function(section){
+  document.querySelectorAll("main section").forEach(function(section){
+    section.classList.add("hidden");
+  });
 
-section.classList.add("hidden");
+  const page = document.getElementById(id);
 
-});
+  if(page){
+    page.classList.remove("hidden");
+  }
 
-document.getElementById(id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
 
-window.scrollTo(0,0);
+
+/* ==============================
+   HOME
+   ============================== */
+
+function home(){
+
+  openPage("home");
+
+  window.scrollTo(0,0);
 
 }
+
+
+/* ==============================
+   LEVEL SYSTEM
+   ============================== */
+
+let selectedLevel =
+  localStorage.getItem("melSelectedLevel") || "Basic";
+
+
+function melChooseLevel(level){
+
+  selectedLevel = level;
+
+  localStorage.setItem(
+    "melSelectedLevel",
+    level
+  );
+
+  openLevel();
+
+}
+
+
+/* ==============================
+   LEVEL DATA
+   ============================== */
+
+const LEVEL_DATA = {
+
+  "Basic": {
+
+    intro:
+      "Alphabet, basic words, simple sentences और English की शुरुआत।",
+
+    lessons: [
+
+      "Alphabet A-Z",
+
+      "Basic Words",
+
+      "Pronouns",
+
+      "am / is / are",
+
+      "Basic Sentences",
+
+      "Daily English",
+
+      "Basic Vocabulary",
+
+      "Basic Speaking",
+
+      "Basic Writing",
+
+      "Basic Test"
+
+    ]
+
+  },
+
+
+  "Beginner": {
+
+    intro:
+      "Simple grammar, daily sentences और basic conversation।",
+
+    lessons: [
+
+      "Nouns",
+
+      "Pronouns",
+
+      "Verbs",
+
+      "Adjectives",
+
+      "Present Simple",
+
+      "Present Continuous",
+
+      "Past Simple",
+
+      "Future Simple",
+
+      "Daily Conversation",
+
+      "Beginner Test"
+
+    ]
+
+  },
+
+
+  "Elementary": {
+
+    intro:
+      "Grammar मजबूत करें और रोज़मर्रा की English में confidence बढ़ाएँ।",
+
+    lessons: [
+
+      "Articles",
+
+      "Prepositions",
+
+      "Helping Verbs",
+
+      "Questions",
+
+      "Negative Sentences",
+
+      "Past Continuous",
+
+      "Future Continuous",
+
+      "Vocabulary",
+
+      "Reading Practice",
+
+      "Elementary Test"
+
+    ]
+
+  },
+
+
+  "Intermediate": {
+
+    intro:
+      "Tenses, sentence structure, vocabulary और communication को मजबूत करें।",
+
+    lessons: [
+
+      "All Basic Tenses",
+
+      "Perfect Tenses",
+
+      "Perfect Continuous",
+
+      "Modal Verbs",
+
+      "Conditionals",
+
+      "Active and Passive",
+
+      "Reported Speech",
+
+      "Reading",
+
+      "Writing",
+
+      "Intermediate Test"
+
+    ]
+
+  },
+
+
+  "Upper-Intermediate": {
+
+    intro:
+      "Complex grammar, advanced vocabulary और fluent communication।",
+
+    lessons: [
+
+      "Advanced Tenses",
+
+      "Complex Sentences",
+
+      "Relative Clauses",
+
+      "Phrasal Verbs",
+
+      "Idioms",
+
+      "Advanced Vocabulary",
+
+      "Speaking",
+
+      "Listening",
+
+      "Essay Writing",
+
+      "Upper-Intermediate Test"
+
+    ]
+
+  },
+
+
+  "Advanced": {
+
+    intro:
+      "Advanced grammar, academic English, fluency और precise writing।",
+
+    lessons: [
+
+      "Advanced Grammar",
+
+      "Advanced Vocabulary",
+
+      "Collocations",
+
+      "Formal English",
+
+      "Academic Reading",
+
+      "Academic Writing",
+
+      "Advanced Speaking",
+
+      "Listening",
+
+      "Presentation English",
+
+      "Advanced Test"
+
+    ]
+
+  },
+
+
+  "Graduation": {
+
+    intro:
+      "Graduation-level English: academic reading, writing, speaking और advanced language skills।",
+
+    lessons: [
+
+      "Academic Grammar",
+
+      "Academic Vocabulary",
+
+      "Critical Reading",
+
+      "Essay Writing",
+
+      "Report Writing",
+
+      "Research Writing",
+
+      "Presentation Skills",
+
+      "Formal Communication",
+
+      "Advanced Comprehension",
+
+      "Graduation Test"
+
+    ]
+
+  }
+
+};
+
+
+/* ==============================
+   OPEN LEVEL
+   ============================== */
+
+function openLevel(){
+
+  document.querySelectorAll("main section").forEach(function(section){
+
+    section.classList.add("hidden");
+
+  });
+
+
+  const levelPage =
+    document.getElementById("levelPage");
+
+
+  if(!levelPage){
+
+    alert(
+      "Level Page अभी HTML में नहीं जोड़ा गया है।"
+    );
+
+    return;
+
+  }
+
+
+  levelPage.classList.remove("hidden");
+
+
+  const data =
+    LEVEL_DATA[selectedLevel];
+
+
+  document.getElementById(
+    "levelTitle"
+  ).innerText =
+    selectedLevel + " Level";
+
+
+  document.getElementById(
+    "levelIntro"
+  ).innerText =
+    data.intro;
+
+
+  renderLevelLessons();
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* ==============================
+   LEVEL LESSONS
+   ============================== */
+
+function renderLevelLessons(){
+
+  const data =
+    LEVEL_DATA[selectedLevel];
+
+
+  const box =
+    document.getElementById("levelContent");
+
+
+  if(!box){
+
+    return;
+
+  }
+
+
+  box.innerHTML = "";
+
+
+  data.lessons.forEach(function(lesson,index){
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "card";
+
+
+    card.innerHTML = `
+
+      <div class="lesson">
+
+        <div class="circle">
+          ${index + 1}
+        </div>
+
+        <div>
+
+          <b>${lesson}</b>
+
+          <div class="small">
+            ${selectedLevel} Level
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    box.appendChild(card);
+
+  });
+
+}
+
+
+/* ==============================
+   LEVEL TAB
+   ============================== */
+
+function showLevelTab(tab){
+
+  const content =
+    document.getElementById("levelContent");
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  if(tab === "lessons"){
+
+    renderLevelLessons();
+
+  }
+
+
+  if(tab === "grammar"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Grammar 📘</h2>
+
+        <p>
+          ${selectedLevel} level के अनुसार
+          Grammar lessons यहाँ दिखाई जाएँगी।
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(tab === "vocabulary"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Vocabulary 📚</h2>
+
+        <p>
+          ${selectedLevel} level की vocabulary
+          यहाँ दिखाई जाएगी।
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(tab === "reading"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Reading 📖</h2>
+
+        <p>
+          ${selectedLevel} level की reading practice।
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(tab === "writing"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Writing ✍️</h2>
+
+        <p>
+          ${selectedLevel} level की writing practice।
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(tab === "speaking"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Speaking 🗣️</h2>
+
+        <p>
+          ${selectedLevel} level की speaking practice।
+        </p>
+
+        <button onclick="speak('I am learning English')">
+          🔊 सुनें
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(tab === "test"){
+
+    content.innerHTML = `
+
+      <div class="card">
+
+        <h2>Test 📝</h2>
+
+        <p>
+          ${selectedLevel} Level Test
+        </p>
+
+        <button onclick="startLevelTest()">
+          Start Test
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* ==============================
+   LEVEL TEST
+   ============================== */
+
+function startLevelTest(){
+
+  const content =
+    document.getElementById("levelContent");
+
+
+  content.innerHTML = `
+
+    <div class="card">
+
+      <h2>${selectedLevel} Test 📝</h2>
+
+      <p>
+        अभी Test System का पहला version तैयार है।
+      </p>
+
+      <button onclick="answerLevelTest(true)">
+        Start Question
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+function answerLevelTest(correct){
+
+  if(correct){
+
+    xp += 5;
+
+    document.getElementById("xp").innerText =
+      xp;
+
+    alert("सही उत्तर! ⭐ +5 XP");
+
+  }
+
+}
+
+
+/* ==============================
+   LEVEL DASHBOARD
+   ============================== */
+
+function updateLevelDashboard(){
+
+  const data =
+    LEVEL_DATA[selectedLevel];
+
+
+  const stats =
+    document.getElementById("levelStats");
+
+
+  if(!stats){
+
+    return;
+
+  }
+
+
+  stats.innerHTML = `
+
+    <h3>📊 ${selectedLevel} Dashboard</h3>
+
+    <p>
+      📚 Lessons:
+      <b>${data.lessons.length}</b>
+    </p>
+
+    <p>
+      📘 Grammar
+      · 📚 Vocabulary
+      · 📖 Reading
+    </p>
+
+    <p>
+      🗣️ Speaking
+      · ✍️ Writing
+      · 📝 Test
+    </p>
+
+  `;
+
+}
+
+
+/* ==============================
+   START SELECTED LEVEL
+   ============================== */
+
+function startSelectedLevel(){
+
+  openLevel();
+
+  updateLevelDashboard();
+
+}
+
+
+/* ==============================
+   PAGE LOAD
+   ============================== */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    const saved =
+      localStorage.getItem(
+        "melSelectedLevel"
+      );
+
+
+    if(saved &&
+       LEVEL_DATA[saved]){
+
+      selectedLevel =
+        saved;
+
+    }
+
+  }
+);
 
 
 function home(){
