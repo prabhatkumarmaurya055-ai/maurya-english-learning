@@ -1056,7 +1056,34 @@ I am studied tomorrow.
 
 let xp=0;
 let done=0;
+/* ===== LEVEL PROGRESS SYSTEM ===== */
 
+let currentLevel = localStorage.getItem("mel_level") || "Basic";
+
+function saveLevel(level){
+    currentLevel = level;
+    localStorage.setItem("mel_level", level);
+
+    let levelText = document.getElementById("currentLevel");
+
+    if(levelText){
+        levelText.innerText = level;
+    }
+
+    alert("Level Selected: " + level);
+}
+
+function showCurrentLevel(){
+    let levelText = document.getElementById("currentLevel");
+
+    if(levelText){
+        levelText.innerText = currentLevel;
+    }
+}
+
+window.addEventListener("load", function(){
+    showCurrentLevel();
+});
 
 /* SPEAK */
 
